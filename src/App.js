@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 
-import DummyStore from './store/dummy-store';
+import NoteContext from './context/NoteContext';
 import Header from './component/header/header';
 import HomePage from './component/homepage/homepage';
 import Folder from './component/Folder/Folder';
@@ -10,17 +10,12 @@ import Note from './component/Note/Note';
 
 class App extends Component {
   state = {
-    // folders: DummyStore.folders,
-    // notes: DummyStore.notes,
     folders: [],
     notes: [],
   }
   componentDidMount() {
     this.getStuff('folders');
     this.getStuff('notes');
-  }
-  stateEcho() {
-    console.log(this.state)
   }
   getStuff(endpoint, method = 'GET') {
     fetch(`http://localhost:9090/${endpoint}`, {
@@ -32,14 +27,14 @@ class App extends Component {
     .then(response => response.json())
     .then(response => {
       //console.log(response);
-      let testObject = { [endpoint]: response };
-      console.log(testObject);
-      this.setState( {[endpoint]: response}, this.stateEcho() );
+      this.setState( {[endpoint]: response} );
     })
   }
   render() {
     return (
-      <>
+    
+      <NoteContext.Provider>
+
         <Header />
         <Route exact path="/" 
           render={
@@ -54,7 +49,8 @@ class App extends Component {
           render={ (props) => <Note folders={this.state.folders} notes={this.state.notes} match={props.match} /> }
         />
         
-      </>
+      </NoteContext.Provider>
+      
     );
   }
 }
