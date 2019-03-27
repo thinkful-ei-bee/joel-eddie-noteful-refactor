@@ -2,8 +2,9 @@ import React from 'react';
 import FolderList from '../folderlist/folderlist';
 import NoteList from '../notelist/notelist';
 import NoteContext from '../../context/NoteContext';
+import {withRouter} from 'react-router-dom';
 
-export default class Folder extends React.Component {
+class Folder extends React.Component {
   static contextType = NoteContext;
 
   render() {
@@ -28,3 +29,6 @@ export default class Folder extends React.Component {
 
   }
 }
+
+const FolderWithRouter = withRouter(Folder);
+export default FolderWithRouter;
