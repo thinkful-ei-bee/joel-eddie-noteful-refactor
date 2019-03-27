@@ -1,27 +1,24 @@
 import React from 'react';
 import FolderList from '../folderlist/folderlist';
-import NoteList from '../notelist/notelist';
+//import NoteList from '../notelist/notelist';
+import NoteContext from '../../context/NoteContext';
 
 export default class Note extends React.Component {
+  static contextType = NoteContext;
+
   render() {
+
+    const { folders, notes } = this.context;
 
     const noteId = this.props.match.params.noteId;
 
-    const note = this.props.notes.find(note => note.id === noteId);
-
-    //const folderId = note.folderId;
-    
-    // id": "cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1",
-    // "name": "Dogs",
-    // "modified": "2019-01-03T00:00:00.000Z",
-    // "folderId": "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
-    // "content":
+    const note = notes.find(note => note.id === noteId);
 
     return (
       <main role="main" className="App">
       <section className="main-layout">
       <div className="left-menu">
-        <FolderList goBack folders={this.props.folders.filter(folder => folder.id === note.folderId)} selected={note.folderId}/>
+        <FolderList goBack folders={folders.filter(folder => folder.id === note.folderId)} selected={note.folderId}/>
       </div>
       <div className="right-content">
         

@@ -33,16 +33,22 @@ class App extends Component {
   render() {
     return (
     
-      <NoteContext.Provider>
+      <NoteContext.Provider 
+        value={{
+          folders: this.state.folders,
+          notes: this.state.notes,
+          match: this.props.match
+        }}
+      >
 
         <Header />
         <Route exact path="/" 
           render={
-            () => <HomePage folders={this.state.folders} notes={this.state.notes} />
+            () => <HomePage />
           }
         />
         <Route exact path="/folder/:folderId"
-          render={ (props) => <Folder folders={this.state.folders} notes={this.state.notes} match={props.match} />
+          render={ (props) => <Folder match={props.match} />
           } 
         />
         <Route exact path="/notes/:noteId"
