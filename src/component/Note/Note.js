@@ -1,9 +1,9 @@
 import React from 'react';
 import FolderList from '../folderlist/folderlist';
-//import NoteList from '../notelist/notelist';
 import NoteContext from '../../context/NoteContext';
+import {withRouter} from 'react-router-dom';
 
-export default class Note extends React.Component {
+class Note extends React.Component {
   static contextType = NoteContext;
 
   render() {
@@ -47,3 +47,5 @@ export default class Note extends React.Component {
 
   }
 }
+
+export default withRouter(Note);

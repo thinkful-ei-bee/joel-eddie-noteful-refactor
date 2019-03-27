@@ -43,12 +43,8 @@ class App extends Component {
 
         <Header />
         <Route exact path="/" component={ HomePage } />
-        <Route exact path="/folder/:folderId"
-          component={ Folder } 
-        />
-        <Route exact path="/notes/:noteId"
-          render={ (props) => <Note folders={this.state.folders} notes={this.state.notes} match={props.match} /> }
-        />
+        <Route exact path="/folder/:folderId" component={ Folder } />
+        <Route exact path="/notes/:noteId" component={ Note } />
         
       </NoteContext.Provider>
       

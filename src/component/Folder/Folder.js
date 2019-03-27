@@ -30,5 +30,4 @@ class Folder extends React.Component {
   }
 }
 
-const FolderWithRouter = withRouter(Folder);
-export default FolderWithRouter;
+export default withRouter(Folder);
