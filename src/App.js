@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
-
+import { browserHistory }  from 'react-router-dom';
 import NoteContext from './context/NoteContext';
 import Header from './component/header/header';
 import HomePage from './component/homepage/homepage';
 import Folder from './component/Folder/Folder';
 import Note from './component/Note/Note';
+
+// as a last resort .. 
+// import { browserHistory } from 'react-router'
+// this.setState({destination: "/"})
+// ...
+// if (this.state.destination) return <Redirect ...></Redirect>
 
 class App extends Component {
   state = {
@@ -33,14 +39,18 @@ class App extends Component {
     })
   }
   handleDeleteNote(id) {
-    console.log(id);
+    // console.log(id);
     // delete noteId from api via getStuff()
     this.fetchApi(`notes/${id.noteId}`, 'notes', 'DELETE');
 
     // delete noteId from state, this calls re-render
     let filtered = this.state.notes.filter(note => note.id !== id.noteId)
-    console.log(filtered);
+    // console.log(filtered);
     this.setState({ notes: filtered });
+
+    // re-route here ..
+    // WHY YOU NO WORKEY !!!!
+    // browserHistory.push('/');
   }
   render() {
     return (
