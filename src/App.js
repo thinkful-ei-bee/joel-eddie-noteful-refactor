@@ -14,10 +14,10 @@ class App extends Component {
     notes: [],
   }
   componentDidMount() {
-    this.getStuff('folders');
-    this.getStuff('notes');
+    this.fetchApi('folders', 'folders');
+    this.fetchApi('notes', 'notes');
   }
-  getStuff(endpoint, method = 'GET') {
+  fetchApi(endpoint, stateKey, method = 'GET') {
     fetch(`http://localhost:9090/${endpoint}`, {
       method: method,
       headers: {
@@ -27,12 +27,15 @@ class App extends Component {
     .then(response => response.json())
     .then(response => {
       //console.log(response);
-      this.setState( {[endpoint]: response} );
+      if(method !== 'DELETE') {
+        this.setState( {[stateKey]: response} );
+      } 
     })
   }
   handleDeleteNote(id) {
     console.log(id);
     // delete noteId from api via getStuff()
+    this.fetchApi(`notes/${id.noteId}`, 'notes', 'DELETE');
 
     // delete noteId from state, this calls re-render
     let filtered = this.state.notes.filter(note => note.id !== id.noteId)
