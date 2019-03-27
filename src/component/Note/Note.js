@@ -8,7 +8,7 @@ class Note extends React.Component {
 
   render() {
 
-    const { folders, notes } = this.context;
+    const { folders, notes, handleDeleteNote } = this.context;
 
     const noteId = this.props.match.params.noteId;
     
@@ -30,7 +30,9 @@ class Note extends React.Component {
               <input 
                 className="favorite styled"
                 type="button"
-                value="Delete note" /> 
+                value="Delete note" 
+                onClick={() => handleDeleteNote(note.noteId)}  
+              /> 
             </li>  
             <li>
               <p>

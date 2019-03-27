@@ -30,6 +30,12 @@ class App extends Component {
       this.setState( {[endpoint]: response} );
     })
   }
+  handleDeleteNote() {
+    console.log('hi!');
+    // delete noteId from api via getStuff()
+
+    // delete noteId from state, this calls re-render
+  }
   render() {
     return (
     
@@ -37,7 +43,7 @@ class App extends Component {
         value={{
           folders: this.state.folders,
           notes: this.state.notes,
-          match: this.props.match
+          handleDeleteNote: noteId => this.handleDeleteNote({noteId}),
         }}
       >
 

@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import NoteContext from '../../context/NoteContext';
 
 export default class NoteList extends Component {
+  static contextType = NoteContext;
 
   render() {
+
+    const { folders, notes, handleDeleteNote } = this.context;
+    
     return (
 
-      // "id": "cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1",
-      // "name": "Dogs",
-      // "modified": "2019-01-03T00:00:00.000Z",
-      // "folderId": "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
-      // "content": "Blah blah blah ..."
-      
       <>
         <ul className="notes-list">
           {this.props.notes.map(note =>
@@ -23,7 +22,9 @@ export default class NoteList extends Component {
               <input 
                 className="favorite styled"
                 type="button"
-                value="Delete note" /> 
+                value="Delete note" 
+                onClick={() => handleDeleteNote(note.noteId)}
+              /> 
             </li>  
           )}
         </ul>
