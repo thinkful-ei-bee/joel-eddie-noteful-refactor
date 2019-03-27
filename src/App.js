@@ -42,11 +42,7 @@ class App extends Component {
       >
 
         <Header />
-        <Route exact path="/" 
-          render={
-            () => <HomePage />
-          }
-        />
+        <Route exact path="/" component={ HomePage } />
         <Route exact path="/folder/:folderId"
           render={ (props) => <Folder match={props.match} />
           } 

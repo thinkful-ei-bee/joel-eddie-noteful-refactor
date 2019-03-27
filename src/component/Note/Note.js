@@ -11,9 +11,9 @@ export default class Note extends React.Component {
     const { folders, notes } = this.context;
 
     const noteId = this.props.match.params.noteId;
-
+    
     const note = notes.find(note => note.id === noteId);
-
+    
     return (
       <main role="main" className="App">
       <section className="main-layout">

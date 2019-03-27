@@ -10,7 +10,7 @@ export default class HomePage extends Component {
   render(){
 
     const { folders, notes } = this.context;
-
+    
     return (
       <main role="main" className="App">
       <section className="main-layout">
