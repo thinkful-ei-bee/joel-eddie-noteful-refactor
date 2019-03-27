@@ -31,7 +31,7 @@ class Note extends React.Component {
                 className="favorite styled"
                 type="button"
                 value="Delete note" 
-                onClick={() => handleDeleteNote(note.noteId)}  
+                onClick={() => handleDeleteNote(note.id)}  
               /> 
             </li>  
             <li>

@@ -30,11 +30,14 @@ class App extends Component {
       this.setState( {[endpoint]: response} );
     })
   }
-  handleDeleteNote() {
-    console.log('hi!');
+  handleDeleteNote(id) {
+    console.log(id);
     // delete noteId from api via getStuff()
 
     // delete noteId from state, this calls re-render
+    let filtered = this.state.notes.filter(note => note.id !== id.noteId)
+    console.log(filtered);
+    this.setState({ notes: filtered });
   }
   render() {
     return (

@@ -23,7 +23,7 @@ export default class NoteList extends Component {
                 className="favorite styled"
                 type="button"
                 value="Delete note" 
-                onClick={() => handleDeleteNote(note.noteId)}
+                onClick={() => handleDeleteNote(note.id)}
               /> 
             </li>  
           )}
