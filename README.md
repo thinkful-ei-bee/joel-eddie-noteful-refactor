@@ -1,3 +1,5 @@
+This project uses this API as a requirement: git@github.com:tomatau/noteful-json-server.git
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
